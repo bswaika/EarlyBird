@@ -4,6 +4,9 @@ const spot = require("./controllers/spotController");
 const middlewares = {
   auth: require("./middlewares/auth")
 }
+const controllers = {
+  user: require("./controllers/user")
+}
 
 // trip-user Routes
 router.route("/api").get((req, res) => {
@@ -11,6 +14,6 @@ router.route("/api").get((req, res) => {
   res.status(200).json({ message: "Hello world!" });
 });
 
-router.post('/api/signup', middlewares.auth.signup, )
+router.post('/api/signup', middlewares.auth.signup, controllers.user.add)
 
 module.exports = router;
