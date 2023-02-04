@@ -1,7 +1,7 @@
 "use strict";
 
 var mongoose = require("mongoose");
-const User = require("../models/userModel");
+const User = require("../models/user");
 
 // retrieve single user's profile with matching id
 exports.getOne = async (req, res) => {
