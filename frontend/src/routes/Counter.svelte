@@ -11,6 +11,23 @@
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
+
+	async function getRandomNumber() {
+		const res = await fetch(`http://localhost:3001/api`);
+
+		if (res.ok) {
+			const json = await res.json();
+			return json.message;
+		} else {
+			throw new Error(await res.json());
+		}
+	}
+
+	let promise = getRandomNumber();
+
+	function handleClick() {
+		promise = getRandomNumber();
+	}
 </script>
 
 <div class="counter">
@@ -32,6 +49,19 @@
 			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
 		</svg>
 	</button>
+
+
+	<button on:click={handleClick}>
+		first link to API
+	</button>
+	
+	{#await promise}
+		<p>...waiting</p>
+	{:then number}
+		<p>Response:{number}</p>
+	{:catch error}
+		<p style="color: red">{error.message}</p>
+	{/await}
 </div>
 
 <style>
