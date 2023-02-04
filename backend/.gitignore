@@ -1,0 +1,5 @@
+/api
+/db
+/env
+/node_modules/*
+.env
