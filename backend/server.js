@@ -10,11 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("Connection established w MongoDB");
-});
+mongoose.connect(uri, {}, () => {console.log('connected...')});
+// const connection = mongoose.connection;
+// connection.once("open", () => {
+//   console.log("Connection established w MongoDB");
+// });
 
 const routes = require("./routes");
 app.use("", routes);

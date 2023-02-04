@@ -6,6 +6,7 @@ const User = require("../models/user");
 // retrieve single user's profile with matching id
 exports.getOne = async (req, res) => {
   try{
+    // console.log(req);
     const user = await User.findOne({ _id: req.params.id });
     res.status(200);
     return res.json(user);
@@ -19,7 +20,6 @@ exports.getOne = async (req, res) => {
 
 exports.add = async (req, res) => {
   // VALIDATION
-  console.log(req.body);
   const user = new User(req.body);
   try{
     await user.save();

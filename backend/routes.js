@@ -1,6 +1,6 @@
 "use strict";
 const router = require("express").Router();
-const spot = require("./controllers/spotController");
+// const spot = require("./controllers/spotController");
 const middlewares = {
   auth: require("./middlewares/auth")
 }
@@ -15,5 +15,6 @@ router.route("/api").get((req, res) => {
 });
 
 router.post('/api/signup', middlewares.auth.signup, controllers.user.add)
+router.post('/api/login', middlewares.auth.login, controllers.user.getOne)
 
 module.exports = router;
