@@ -4,49 +4,73 @@ var mongoose = require("mongoose");
 const User = require("../models/userModel");
 
 // retrieve single user's profile with matching id
-exports.get_profile = async function (req, res) {
-  User.findOne({ username: req.params.username }, function (err, user) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json(user);
-    }
-  });
+exports.getOne = async (req, res) => {
+  try{
+    const user = await User.findOne({ _id: req.params.id });
+    res.status(200);
+    return res.json(user);
+  } catch (e) {
+    // LOG 
+    // CUSTOM ERROR OBJECT
+    res.status(500);
+    return res.send(e);
+  }
 };
 
-exports.create_profile = function (req, res) {
-  var new_user = new User(req.body);
-
-  new_user.save(function (err, user) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json("User profile created");
-    }
-  });
+exports.add = async (req, res) => {
+  // VALIDATION
+  console.log(req.body);
+  const user = new User(req.body);
+  try{
+    await user.save();
+    res.status(201)
+    return res.json(user);
+  } catch (e) {
+    // LOG
+    // CUSTOM ERROR OBJECT
+    res.status(500)
+    return res.send(e);
+  }
 };
 
-exports.delete_profile = function (req, res) {
-  User.deleteOne(
-    {
-      username: req.params.userId,
-    },
-    function (err, user) {
-      if (err) {
-        res.send(err);
-      } else {
-        res.json({ message: "User successfully deleted" });
-      }
-    }
-  );
+exports.update = async (req, res) => {
+  try{
+    // VALIDATION
+    const user = await User.updateOne({ _id: req.params.id }, req.body);
+    res.status(200);
+    return res.json(user);
+  } catch (e) {
+    // LOG 
+    // CUSTOM ERROR OBJECT
+    res.status(500);
+    return res.send(e);
+  }
+}
+
+exports.remove = async (req, res) => {
+  try{
+    await User.deleteOne({ _id: req.params.id });
+    res.status(200);
+    return res.json({status: 'success'});
+  }catch (e) {
+    // LOG 
+    // CUSTOM ERROR OBJECT
+    res.status(500);
+    return res.send(e);
+  }
+  
+
 };
 
-exports.list_users = async function (req, res) {
-  User.find({}, function (err, user) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json(user);
-    }
-  });
+exports.getAll = async function (req, res) {
+  try{
+    const users = await User.find();
+    res.status(200)
+    return res.json(users);
+  } catch(e) {
+    // LOG 
+    // CUSTOM ERROR OBJECT
+    res.status(500);
+    return res.send(e);
+  }
 };
