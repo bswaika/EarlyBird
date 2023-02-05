@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import github from '$lib/images/earlybird.webp';
 </script>
 
 <header>
@@ -50,8 +50,8 @@
 	}
 
 	.corner img {
-		width: 5em;
-		height: 5em;
+		width: 9em;
+		height: 9em;
 		object-fit: contain;
 		float: left;
 		align-items: left;

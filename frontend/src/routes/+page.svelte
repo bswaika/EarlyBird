@@ -16,7 +16,6 @@
 	// 	console.log(data)
 	// }
 
-
 </script>
 
 <svelte:head>
@@ -32,16 +31,7 @@
 				<img src={welcome_fallback} alt="Earlybird" />
 			</picture>
 		</span>
-
-		to your new<br />SvelteKit app
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-		<!-- <a on:click={load}>CLICK ME</a> -->
-	</h2>
-
-	<Counter />
 </section>
 
 <style>
