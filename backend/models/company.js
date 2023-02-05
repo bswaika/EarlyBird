@@ -5,7 +5,10 @@ const Activity = require("./activity");
 
 var CompanySchema = new Schema({
   name: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true,
+  },
   passwordHash: String,
   activities: [Activity],
 });

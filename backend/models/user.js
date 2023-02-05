@@ -8,14 +8,14 @@ var UserSchema = new Schema({
   name: String,
   email: {
     type: String,
-    unique: true
+    unique: true,
   },
   passwordHash: String,
   token: String,
-  // followingCompanies: [String],
-  // activities: [{ activity: Activity, status: String }],
-  // rewardPoints: Number,
-  // loyalties: [Loyalty],
+  followingCompanies: [String],
+  activities: [{ activity: Activity, status: String }],
+  rewardPoints: Number,
+  loyalties: [Loyalty],
 });
 
 module.exports = mongoose.model("User", UserSchema);
