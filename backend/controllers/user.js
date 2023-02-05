@@ -80,8 +80,9 @@ exports.getAll = async function (req, res) {
 // Pass in {username: "username", activityId: "activityId", status: "status"}
 exports.activityUpdate = async function (req, res) {
   // Get user doc
+  console.log("Updating activity", req.body);
   let userDoc = await User.findOne(
-    { username: req.body.username },
+    { email: req.body.email },
     function (err, user) {
       if (err) {
         res.send(err);
@@ -101,7 +102,7 @@ exports.activityUpdate = async function (req, res) {
   // Update user doc
   userDoc = await User.findOneAndUpdate(
     {
-      username: req.body.username,
+      email: req.body.email,
     },
     {
       activities: newActivities,
@@ -125,17 +126,28 @@ exports.activityUpdate = async function (req, res) {
 exports.typeformWebhook = async (req, res) => {
   // check if webhook is valid
   // get user
+  console.log("TYPEFORM WEBHOOK", req.body);
+  const email = req.body.form_response.definition.fields.filter(
+    title === "First off, what's your email address?"
+  )[0].value;
   const username = req.body.form_response.definition.fields.filter(
-    title === "username"
+    title === "What's your EarlyBird username?"
   )[0].value;
   const activityId = req.params.activityId;
 
+  console.log("email: ", email);
+  console.log("activityId: ", activityId);
+  console.log("username: ", username);
   // update user activity
-  this.activityUpdate({
-    username: username,
-    activityId: activityId,
-    status: "completed",
-  });
+  this.activityUpdate(
+    {
+      email: email,
+      username: username,
+      activityId: activityId,
+      status: "completed",
+    },
+    {}
+  );
 
   // send response
   res.send(200);
