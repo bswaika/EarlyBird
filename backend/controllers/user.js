@@ -2,18 +2,18 @@
 
 var mongoose = require("mongoose");
 const User = require("../models/user");
-const Activity = require("../models/activity");
-const Loyalty = require("../models/loyalty");
+const Activity = require("../models/activity").Activity;
+const Loyalty = require("../models/loyalty").Loyalty;
 
 // retrieve single user's profile with matching id
 exports.getOne = async (req, res) => {
-  try{
+  try {
     // console.log(req);
     const user = await User.findOne({ _id: req.params.id });
     res.status(200);
     return res.json(user);
   } catch (e) {
-    // LOG 
+    // LOG
     // CUSTOM ERROR OBJECT
     res.status(500);
     return res.send(e);
@@ -23,54 +23,52 @@ exports.getOne = async (req, res) => {
 exports.add = async (req, res) => {
   // VALIDATION
   const user = new User(req.body);
-  try{
+  try {
     await user.save();
-    res.status(201)
+    res.status(201);
     return res.json(user);
   } catch (e) {
     // LOG
     // CUSTOM ERROR OBJECT
-    res.status(500)
+    res.status(500);
     return res.send(e);
   }
 };
 
 exports.update = async (req, res) => {
-  try{
+  try {
     // VALIDATION
     const user = await User.updateOne({ _id: req.params.id }, req.body);
     res.status(200);
     return res.json(user);
   } catch (e) {
-    // LOG 
+    // LOG
     // CUSTOM ERROR OBJECT
     res.status(500);
     return res.send(e);
   }
-}
+};
 
 exports.remove = async (req, res) => {
-  try{
+  try {
     await User.deleteOne({ _id: req.params.id });
     res.status(200);
-    return res.json({status: 'success'});
-  }catch (e) {
-    // LOG 
+    return res.json({ status: "success" });
+  } catch (e) {
+    // LOG
     // CUSTOM ERROR OBJECT
     res.status(500);
     return res.send(e);
   }
-  
-
 };
 
 exports.getAll = async function (req, res) {
-  try{
+  try {
     const users = await User.find();
-    res.status(200)
+    res.status(200);
     return res.json(users);
-  } catch(e) {
-    // LOG 
+  } catch (e) {
+    // LOG
     // CUSTOM ERROR OBJECT
     res.status(500);
     return res.send(e);

@@ -1,7 +1,7 @@
 "use strict";
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-const Activity = require("./activity");
+const Activity = require("./activity").ActivitySchema;
 
 var CompanySchema = new Schema({
   name: String,
@@ -10,6 +10,7 @@ var CompanySchema = new Schema({
     unique: true,
   },
   passwordHash: String,
+  token: String,
   activities: [Activity],
 });
 

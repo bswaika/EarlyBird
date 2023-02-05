@@ -8,11 +8,11 @@ var Question = new Schema({
   options: [String],
 });
 
-var SurveyScheme = new Schema({
+var SurveySchema = new Schema({
   activityId: String,
   name: String,
   actionLink: String,
   questions: [Question],
 });
 
-module.exports = mongoose.model("Survey", SurveyScheme);
+module.exports = mongoose.model("Survey", SurveySchema);

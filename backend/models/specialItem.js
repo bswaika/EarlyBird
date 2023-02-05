@@ -10,4 +10,5 @@ var SpecialItemSchema = new Schema({
   fungible: Boolean,
 });
 
-module.exports = mongoose.model("SpecialItem", SpecialItemSchema);
+module.exports.SpecialItemSchema = SpecialItemSchema;
+module.exports.SpecialItem = mongoose.model("SpecialItem", SpecialItemSchema);
