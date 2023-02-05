@@ -2,6 +2,8 @@
 
 var mongoose = require("mongoose");
 const User = require("../models/user");
+const Activity = require("../models/activity");
+const Loyalty = require("../models/loyalty");
 
 // retrieve single user's profile with matching id
 exports.getOne = async (req, res) => {
@@ -72,5 +74,52 @@ exports.getAll = async function (req, res) {
     // CUSTOM ERROR OBJECT
     res.status(500);
     return res.send(e);
+  }
+};
+
+// This should allow for someone to either add a new activity to their activities list or update their completion status
+// This will also give them points for completing an activity
+// Pass in {username: "username", activityId: "activityId", status: "status"}
+exports.activityUpdate = async function (req, res) {
+  // Get user doc
+  let userDoc = await User.findOne(
+    { username: req.body.username },
+    function (err, user) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(user);
+      }
+    }
+  );
+
+  // Modify activity array
+  let activityObject = await Activity.findOne({ _id: req.body.activityId });
+
+  let newActivities = userDoc.activities
+    .filter((x) => x.id != req.body.activityId)
+    .push({ activity: activityObject, status: req.body.status });
+
+  // Update user doc
+  userDoc = await User.findOneAndUpdate(
+    {
+      username: req.body.username,
+    },
+    {
+      activities: newActivities,
+      $inc: { rewardPoints: activityObject.points },
+    },
+    { new: true },
+    function (err, user) {}
+  );
+
+  if (req.body.status == "completed") {
+    await Loyalty.findOneAndUpdate(
+      {
+        username: req.body.username,
+        company: activityObject.company,
+      },
+      { $inc: { points: activityObject.points } }
+    );
   }
 };
