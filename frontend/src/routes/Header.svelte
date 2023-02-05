@@ -5,14 +5,13 @@
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
 	<nav>
 		<ul>
+			<div class="corner">
+				<a href="https://kit.svelte.dev">
+					<img src={logo} alt="SvelteKit" />
+				</a>
+			</div>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
@@ -30,31 +29,41 @@
 <style>
 	header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: none;
 	}
 
 	.corner {
 		width: 3em;
 		height: 3em;
+		float: left;
+		align-items: left;
+		justify-content: left;
 	}
 
 	.corner a {
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		align-items: left;
+		justify-content: left;
 		width: 100%;
 		height: 100%;
+		float: left;
+		position:absolute;
+    	left: 0;
 	}
 
 	.corner img {
 		width: 2em;
 		height: 2em;
 		object-fit: contain;
+		float: left;
+		align-items: left;
+		justify-content: left;
 	}
 
 	nav {
 		display: flex;
-		justify-content: center;
+		width: 100%;
+		/* justify-content: right; */
 		--background: rgba(120, 116, 116, 0.7);
 	}
 
@@ -64,8 +73,8 @@
 		margin: 0;
 		height: 5em;
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		justify-content: right;
+		align-items: right;
 		list-style: none;
 		background: var(--background);
 		width: 100%;
