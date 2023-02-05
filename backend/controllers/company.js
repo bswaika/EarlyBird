@@ -2,8 +2,8 @@
 
 var mongoose = require("mongoose");
 const Company = require("../models/company");
-const Activity = require("../models/activity");
-const Loyalty = require("../models/loyalty");
+const Activity = require("../models/activity").Activity;
+const Loyalty = require("../models/loyalty").Loyalty;
 
 // retrieve single Company's profile with matching id
 exports.getOne = async (req, res) => {
