@@ -17,7 +17,6 @@ var UserSchema = new Schema({
   activities: [{ activity: Activity, status: String }],
   rewardPoints: Number,
   loyalties: [Loyalty],
-  specialItems: [{ specialItem: SpecialItem, quantity: Number }],
 });
 
 module.exports = mongoose.model("User", UserSchema);

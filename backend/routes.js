@@ -70,12 +70,12 @@ router.route("/api/typeformWebhook/:activityId").post((req, res) => {
 // Special Item Routes
 
 // create new special item
-routeer.route("/api/specialItem/").post((req, res) => {
+router.route("/api/specialItem/").post((req, res) => {
   controllers.specialItem.generateSpecialItem(req, res);
 });
 
 // user purchases special item with reward points
-routeer.route("/api/specialItem/:id/user/:userId").post((req, res) => {
+router.route("/api/specialItem/:id/user/:userId").post((req, res) => {
   controllers.specialItem.generateSpecialItem(req, res);
 });
 
