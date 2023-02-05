@@ -21,12 +21,12 @@ router.post("/api/login", middlewares.auth.login, controllers.user.getOne);
 
 router.post(
   "/api/signupCompany",
-  middlewares.auth.signup,
+  middlewares.auth.signupCompany,
   controllers.company.add
 );
 router.post(
   "/api/loginCompany",
-  middlewares.auth.login,
+  middlewares.auth.loginCompany,
   controllers.company.getOne
 );
 
@@ -42,6 +42,10 @@ router.route("/api/createActivity").post((req, res) => {
 
 router.route("/api/deleteActivity").post((req, res) => {
   controllers.company.deleteActivity(req, res);
+});
+
+router.route("/api/typeformWebhook").post((req, res) => {
+  controllers.activity.typeformWebhook(req, res);
 });
 
 module.exports = router;

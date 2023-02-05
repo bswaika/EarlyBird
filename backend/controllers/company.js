@@ -9,9 +9,9 @@ const Loyalty = require("../models/loyalty").Loyalty;
 exports.getOne = async (req, res) => {
   try {
     // console.log(req);
-    const Company = await Company.findOne({ _id: req.params.id });
+    const company = await Company.findOne({ _id: req.params.id });
     res.status(200);
-    return res.json(Company);
+    return res.json(company);
   } catch (e) {
     // LOG
     // CUSTOM ERROR OBJECT
@@ -22,11 +22,11 @@ exports.getOne = async (req, res) => {
 
 exports.add = async (req, res) => {
   // VALIDATION
-  const Company = new Company(req.body);
+  const company = new Company(req.body);
   try {
-    await Company.save();
+    await company.save();
     res.status(201);
-    return res.json(Company);
+    return res.json(company);
   } catch (e) {
     // LOG
     // CUSTOM ERROR OBJECT
@@ -38,9 +38,9 @@ exports.add = async (req, res) => {
 exports.update = async (req, res) => {
   try {
     // VALIDATION
-    const Company = await Company.updateOne({ _id: req.params.id }, req.body);
+    const company = await Company.updateOne({ _id: req.params.id }, req.body);
     res.status(200);
-    return res.json(Company);
+    return res.json(company);
   } catch (e) {
     // LOG
     // CUSTOM ERROR OBJECT
@@ -64,9 +64,9 @@ exports.remove = async (req, res) => {
 
 exports.getAll = async function (req, res) {
   try {
-    const Companys = await Company.find();
+    const companys = await Company.find();
     res.status(200);
-    return res.json(Companys);
+    return res.json(companys);
   } catch (e) {
     // LOG
     // CUSTOM ERROR OBJECT

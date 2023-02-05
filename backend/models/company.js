@@ -10,6 +10,7 @@ var CompanySchema = new Schema({
     unique: true,
   },
   passwordHash: String,
+  token: String,
   activities: [Activity],
 });
 
