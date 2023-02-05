@@ -8,8 +8,8 @@
 	<nav>
 		<ul>
 			<div class="corner">
-				<a href="https://kit.svelte.dev">
-					<img src={logo} alt="SvelteKit" />
+				<a href="https://github.com/bswaika/EarlyBird">
+					<img src={github} alt="Github Link" />
 				</a>
 			</div>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
@@ -18,8 +18,8 @@
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/login') ? 'page' : undefined}>
-				<a href="/login">Login</a>
+			<li aria-current={$page.url.pathname.startsWith('/userselect') ? 'page' : undefined}>
+				<a href="/userselect">Login</a>
 			</li>
 		</ul>
 	</nav>
@@ -33,8 +33,8 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		width: 5em;
+		height: 5em;
 		float: left;
 		align-items: left;
 		justify-content: left;
@@ -52,8 +52,8 @@
 	}
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		width: 5em;
+		height: 5em;
 		object-fit: contain;
 		float: left;
 		align-items: left;
