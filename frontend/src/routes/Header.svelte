@@ -18,8 +18,8 @@
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/userselect') ? 'page' : undefined}>
-				<a href="/userselect">Login</a>
+			<li aria-current={$page.url.pathname.startsWith('/login') ? 'page' : undefined}>
+				<a href="/login">Login</a>
 			</li>
 		</ul>
 	</nav>
@@ -44,8 +44,6 @@
 		display: flex;
 		align-items: left;
 		justify-content: left;
-		width: 100%;
-		height: 100%;
 		float: left;
 		position:absolute;
     	left: 0;

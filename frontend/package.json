@@ -28,6 +28,7 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
+		"svelte-switch": "^0.0.5",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
@@ -35,6 +36,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"bootstrap": "^5.2.3"
+		"bootstrap": "^5.2.3",
+		"install": "^0.13.0",
+		"npm": "^9.4.1"
 	}
 }

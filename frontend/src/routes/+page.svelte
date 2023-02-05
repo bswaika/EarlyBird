@@ -1,7 +1,22 @@
 <script>
 	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/logo.webp';
-	import welcome_fallback from '$lib/images/logo.svg';
+	import welcome from '$lib/images/earlybird.webp';
+	import welcome_fallback from '$lib/images/earlybird.png';
+
+	// async function load() {
+	// 	const res = await fetch('http://localhost:3000/api/signup', {
+	// 		method: 'POST',
+	// 		body: JSON.stringify({
+	// 			email: 'abc123@xyz.com',
+	// 			passwordHash: 'adad',
+	// 			name: 'blahblah'
+	// 		})
+	// 	})
+	// 	const data = await res.json();
+	// 	console.log(data)
+	// }
+
+
 </script>
 
 <svelte:head>
@@ -23,6 +38,7 @@
 
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
+		<!-- <a on:click={load}>CLICK ME</a> -->
 	</h2>
 
 	<Counter />
@@ -51,9 +67,12 @@
 
 	.welcome img {
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		/* margin:0 auto; */
+		width: 50%;
+		height: 50%;
 		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
 		display: block;
 	}
 </style>
