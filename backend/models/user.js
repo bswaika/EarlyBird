@@ -1,8 +1,8 @@
 "use strict";
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-// const Activity = require("./activity");
-// const Loyalty = require("./loyalty");
+const Activity = require("./activity").ActivitySchema;
+const Loyalty = require("./loyalty.js").LoyaltySchema;
 
 var UserSchema = new Schema({
   name: String,

@@ -1,7 +1,7 @@
 "use strict";
 
 var mongoose = require("mongoose");
-const Activity = require("../models/activity");
+const Activity = require("../models/activity").Activity;
 
 // retrieve single user's profile with matching id
 exports.getOne = async (req, res) => {

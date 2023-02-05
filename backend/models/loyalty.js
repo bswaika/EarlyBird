@@ -1,7 +1,7 @@
 "use strict";
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-const SpecialItem = require("./specialItem");
+const SpecialItem = require("./specialItem").SpecialItemSchema;
 
 var LoyaltySchema = new Schema({
   username: String,
@@ -10,4 +10,5 @@ var LoyaltySchema = new Schema({
   specials: [{ item: SpecialItem, quantity: Number }],
 });
 
-module.exports = mongoose.model("Loyalty", LoyaltySchema);
+module.exports.LoyaltySchema = LoyaltySchema;
+module.exports.Loyalty = mongoose.model("Loyalty", LoyaltySchema);
