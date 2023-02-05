@@ -1,6 +1,5 @@
 "use strict";
 const router = require("express").Router();
-// const user = require("./controllers/spotController");
 const middlewares = {
   auth: require("./middlewares/auth"),
 };
@@ -35,13 +34,25 @@ router.route("/api/user/activityUpdate").post((req, res) => {
   controllers.user.activityUpdate(req, res);
 });
 
-// company Routes
-router.route("/api/createActivity").post((req, res) => {
-  controllers.company.createActivity(req, res);
+// computer Routes
+router.route("/api/company/:id").get((req, res) => {
+  controllers.company.getOne(req, res);
 });
 
-router.route("/api/deleteActivity").post((req, res) => {
-  controllers.company.deleteActivity(req, res);
+// activity Routes
+
+router.route("/api/company/:companyId/activity").post((req, res) => {
+  controllers.activity.createActivity(req, res);
+});
+
+router
+  .route("/api/company/:companyId/activity/:activityId")
+  .delete((req, res) => {
+    controllers.activity.deleteActivity(req, res);
+  });
+
+router.route("/api/activity/:activityId").get((req, res) => {
+  controllers.activity.getOne(req, res);
 });
 
 router.route("/api/typeformWebhook/:activityId").post((req, res) => {
