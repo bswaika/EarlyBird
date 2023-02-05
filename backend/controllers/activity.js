@@ -23,8 +23,12 @@ exports.createActivity = async (req, res) => {
   switch (req.body.type) {
     case "survey":
       // create webhook
-      await Activity.create({
+      let activityDoc = await Activity.create({
         type: "survey",
+        name: req.body.name,
+        description: req.body.description,
+        points: req.body.points,
+        deadline: req.body.deadline,
         surveyLink: req.body.surveyLink,
         webhook: req.body.webhook,
         company: req.body.company,
@@ -34,7 +38,7 @@ exports.createActivity = async (req, res) => {
       await fetch(
         `https://api.typeform.com/forms/${
           req.body.form_id
-        }/webhooks/${"earlyByrd"}`,
+        }/webhooks/${"earlyBird"}`,
         {
           method: "PUT",
           headers: {
@@ -42,7 +46,7 @@ exports.createActivity = async (req, res) => {
             Authorization: "bearer " + process.env.TYPEFORM_TOKEN,
           },
           body: JSON.stringify({
-            url: "https://localhost:3001/api/typeformWebhook",
+            url: `https://localhost:3001/api/typeformWebhook/${activityDoc._id}`,
             enabled: true,
           }),
         }
@@ -65,9 +69,3 @@ exports.createActivity = async (req, res) => {
 exports.updateActivity = async (req, res) => {};
 
 exports.deleteActivity = async (req, res) => {};
-
-exports.typeformWebhook = async (req, res) => {
-  // check if webhook is valid
-  // update activity data
-  // send response
-};

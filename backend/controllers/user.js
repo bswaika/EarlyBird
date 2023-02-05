@@ -121,3 +121,22 @@ exports.activityUpdate = async function (req, res) {
     );
   }
 };
+
+exports.typeformWebhook = async (req, res) => {
+  // check if webhook is valid
+  // get user
+  const username = req.body.form_response.definition.fields.filter(
+    title === "username"
+  )[0].value;
+  const activityId = req.params.activityId;
+
+  // update user activity
+  this.activityUpdate({
+    username: username,
+    activityId: activityId,
+    status: "completed",
+  });
+
+  // send response
+  res.send(200);
+};

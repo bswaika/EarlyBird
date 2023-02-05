@@ -44,8 +44,8 @@ router.route("/api/deleteActivity").post((req, res) => {
   controllers.company.deleteActivity(req, res);
 });
 
-router.route("/api/typeformWebhook").post((req, res) => {
-  controllers.activity.typeformWebhook(req, res);
+router.route("/api/typeformWebhook/:activityId").post((req, res) => {
+  controllers.user.typeformWebhook(req, res);
 });
 
 module.exports = router;
