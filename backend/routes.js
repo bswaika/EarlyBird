@@ -34,9 +34,17 @@ router.route("/api/user/activityUpdate").post((req, res) => {
   controllers.user.activityUpdate(req, res);
 });
 
+router.route("/api/user/:id").get((req, res) => {
+  controllers.user.getOne(req, res);
+});
+
 // computer Routes
 router.route("/api/company/:id").get((req, res) => {
   controllers.company.getOne(req, res);
+});
+
+router.route("/api/company").get((req, res) => {
+  controllers.company.getAll(req, res);
 });
 
 // activity Routes

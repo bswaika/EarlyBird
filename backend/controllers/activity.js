@@ -31,6 +31,10 @@ exports.createActivity = async (req, res) => {
     company: req.params.companyId,
   });
 
+  let companyDoc = await Company.findOne({ _id: req.params.companyId });
+  companyDoc.activities.push(activityDoc);
+  await companyDoc.save();
+
   switch (req.body.type) {
     case "survey":
       // create webhook

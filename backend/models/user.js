@@ -12,10 +12,10 @@ var UserSchema = new Schema({
   },
   passwordHash: String,
   token: String,
-  // followingCompanies: [String],
-  // activities: [{ activity: Activity, status: String }],
-  // rewardPoints: Number,
-  // loyalties: [Loyalty],
+  followingCompanies: [String],
+  activities: [{ activity: Activity, status: String }],
+  rewardPoints: Number,
+  loyalties: [Loyalty],
 });
 
 module.exports = mongoose.model("User", UserSchema);

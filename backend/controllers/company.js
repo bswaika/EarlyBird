@@ -20,6 +20,19 @@ exports.getOne = async (req, res) => {
   }
 };
 
+exports.getAll = async function (req, res) {
+  try {
+    const companies = await Company.find();
+    res.status(200);
+    return res.json(companies);
+  } catch (e) {
+    // LOG
+    // CUSTOM ERROR OBJECT
+    res.status(500);
+    res.send(e);
+  }
+};
+
 exports.add = async (req, res) => {
   // VALIDATION
   const company = new Company(req.body);
