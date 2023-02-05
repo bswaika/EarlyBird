@@ -5,90 +5,79 @@
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
+			<div class="corner">
+				<a href="https://kit.svelte.dev">
+					<img src={logo} alt="SvelteKit" />
+				</a>
+			</div>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+			<li aria-current={$page.url.pathname.startsWith('/login') ? 'page' : undefined}>
+				<a href="/login">Login</a>
 			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: none;
 	}
 
 	.corner {
 		width: 3em;
 		height: 3em;
+		float: left;
+		align-items: left;
+		justify-content: left;
 	}
 
 	.corner a {
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		align-items: left;
+		justify-content: left;
 		width: 100%;
 		height: 100%;
+		float: left;
+		position:absolute;
+    	left: 0;
 	}
 
 	.corner img {
 		width: 2em;
 		height: 2em;
 		object-fit: contain;
+		float: left;
+		align-items: left;
+		justify-content: left;
 	}
 
 	nav {
 		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
+		width: 100%;
+		/* justify-content: right; */
+		--background: rgba(120, 116, 116, 0.7);
 	}
 
 	ul {
 		position: relative;
 		padding: 0;
 		margin: 0;
-		height: 3em;
+		height: 5em;
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		justify-content: right;
+		align-items: right;
 		list-style: none;
 		background: var(--background);
+		width: 100%;
 		background-size: contain;
 	}
 

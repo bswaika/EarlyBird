@@ -1,12 +1,12 @@
 <script>
 	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import welcome from '$lib/images/logo.webp';
+	import welcome_fallback from '$lib/images/logo.svg';
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Earlybird</title>
+	<meta name="description" content="Earlybird HackSC" />
 </svelte:head>
 
 <section>
@@ -14,7 +14,7 @@
 		<span class="welcome">
 			<picture>
 				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
+				<img src={welcome_fallback} alt="Earlybird" />
 			</picture>
 		</span>
 
