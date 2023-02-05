@@ -91,7 +91,7 @@ router.route("/api/specialItem/company/:companyId").get((req, res) => {
 
 // get list of personally-owned special items
 router.route("/api/specialItem/user/:userId").get((req, res) => {
-  controllers.specialItem.getUsersSpecialItems(req, res);
+  controllers.specialItem.getUsersLoyalties(req, res);
 });
 
 module.exports = router;
