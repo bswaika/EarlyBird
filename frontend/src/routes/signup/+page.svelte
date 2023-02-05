@@ -17,7 +17,7 @@
     let _pwd = '';
     let _email = '';
     let getResult = async () => {
-        let result = await fetch(`http://localhost:3000/api/${current === "Users" ? "login" : "loginCompany"}`, {
+        let result = await fetch(`http://localhost:3000/api/${current === "Users" ? "signup" : "signupCompany"}`, {
             method: 'POST',
             body: JSON.stringify({
                 name: _name,
@@ -63,7 +63,7 @@
 
 
 <svelte:head>
-	<title>Log In</title>
+	<title>Sign Up</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
@@ -79,8 +79,10 @@ The switch is {checkedValue ? 'on' : 'off'}. -->
 </div>
 
 <div class="text-column">
-    <form action="http://localhost:3000/api/{current === "Users" ? "login" : "loginCompany"}" method="POST">
-        <p>Log In</p>
+    <form action="http://localhost:3000/api/{current === "Users" ? "signup" : "signupCompany"}" method="POST">
+        <p>Sign Up</p>
+        <p>Name</p>
+        <input name="name" bind:value={_name}>
         <p>Email</p>
         <input name="email" bind:value={_email}>
         <p>Password</p>
