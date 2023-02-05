@@ -16,6 +16,25 @@
 	// 	console.log(data)
 	// }
 
+	async function getCompanies() {
+		const res = await fetch(`http://localhost:3000/api/company`);
+
+		if (res.ok) {
+			return await res.json();
+		} else {
+			throw new Error(await res.json());
+		}
+	}
+
+	/**
+	 * @type any[]
+	 */
+	let companies = [];
+	 getCompanies().then((data) => {
+		companies = data;
+		console.log(companies);
+	});
+
 </script>
 
 <svelte:head>
@@ -32,6 +51,17 @@
 			</picture>
 		</span>
 	</h1>
+	<ul>
+		{#each companies as { _id, name, activities }, i}
+			<li>
+				<a href="/company/{_id}">
+					{name}
+				</a>
+				<p>Activities: {activities.length}</p>
+			</li>
+		{/each}
+	</ul>
+	
 </section>
 
 <style>

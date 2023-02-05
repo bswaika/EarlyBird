@@ -8,7 +8,7 @@
 	<nav>
 		<ul>
 			<div class="corner">
-				<a href="https://github.com/bswaika/EarlyBird">
+				<a href="/">
 					<img src={github} alt="Github Link" />
 				</a>
 			</div>
