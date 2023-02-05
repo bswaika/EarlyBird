@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 const Activity = require("./activity").ActivitySchema;
 const Loyalty = require("./loyalty.js").LoyaltySchema;
+const SpecialItem = require("./specialItem").SpecialItemSchema;
 
 var UserSchema = new Schema({
   name: String,
@@ -16,6 +17,7 @@ var UserSchema = new Schema({
   activities: [{ activity: Activity, status: String }],
   rewardPoints: Number,
   loyalties: [Loyalty],
+  specialItems: [{ specialItem: SpecialItem, quantity: Number }],
 });
 
 module.exports = mongoose.model("User", UserSchema);

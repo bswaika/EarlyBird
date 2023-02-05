@@ -67,4 +67,31 @@ router.route("/api/typeformWebhook/:activityId").post((req, res) => {
   controllers.user.typeformWebhook(req, res);
 });
 
+// Special Item Routes
+
+// create new special item
+routeer.route("/api/specialItem/").post((req, res) => {
+  controllers.specialItem.generateSpecialItem(req, res);
+});
+
+// user purchases special item with reward points
+routeer.route("/api/specialItem/:id/user/:userId").post((req, res) => {
+  controllers.specialItem.generateSpecialItem(req, res);
+});
+
+// get list of special items
+router.route("/api/specialItem/").get((req, res) => {
+  controllers.specialItem.getAll(req, res);
+});
+
+// get list of special items by company
+router.route("/api/specialItem/company/:companyId").get((req, res) => {
+  controllers.specialItem.getAllByCompany(req, res);
+});
+
+// get list of personally-owned special items
+router.route("/api/specialItem/user/:userId").get((req, res) => {
+  controllers.specialItem.getUsersSpecialItems(req, res);
+});
+
 module.exports = router;

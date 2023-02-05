@@ -8,6 +8,9 @@ var SpecialItemSchema = new Schema({
   description: String,
   exchangeRate: Number,
   fungible: Boolean,
+  image: String,
+  name: String,
+  uid: String, // Can be used as promo code
 });
 
 module.exports.SpecialItemSchema = SpecialItemSchema;
