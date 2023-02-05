@@ -1,5 +1,6 @@
 <script>
 	import { json } from "@sveltejs/kit";
+    import {userId} from '$lib/stores.js'
     // import Switch from "svelte-switch";
 
     let checkedValue = true;
@@ -34,6 +35,7 @@
         });
         let data = await result.json()
         console.log(data)
+        userId.set(data.id);
     }
 
     function toggle(){
